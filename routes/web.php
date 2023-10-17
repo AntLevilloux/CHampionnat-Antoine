@@ -40,4 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('locale', 'LocalizationController@getLang')->name('getlang');
+
+Route::get('locale/{lang}', 'LocalizationController@setLang')->name('setlang');
+
 require __DIR__.'/auth.php';
