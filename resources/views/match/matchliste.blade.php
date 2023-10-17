@@ -1,6 +1,7 @@
 @extends('layout.navbar')
 @section('content')
 
+
 <h1 class="text-center">matchs</h1>
 <div class="table-responsive m-5">
     <table class="table table-striped table-bordered">
@@ -59,7 +60,11 @@
             @endforelse
         </tbody>
     </table>
+
     <a class="btn btn-success" href="{{ route('match.create')}}">Ajouter un match</a>
+
+
+
 </div>
 
 @endsection
