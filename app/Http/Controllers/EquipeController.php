@@ -67,27 +67,28 @@ class EquipeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $ville = $data["ville"];
-        $cat = $data["categorie"];
-        $champ = $data["championnat"];
+        $data = $request->validate([
+            'ville' => 'required|string',
+            'categorie' => 'required|string',
+            'championnat' => 'required|string',
+        ]);
 
         $equipe = new Equipe;
-        $equipe->ville = $ville;
-        $equipe->categorie = $cat;
-        $equipe->championnat = $champ;
+        $equipe->ville = $data['ville'];
+        $equipe->categorie = $data['categorie'];
+        $equipe->championnat = $data['championnat'];
         $equipe->save();
 
         return redirect()->route('equipe.index');
     }
 
+
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Equipe $equipe)
     {
-        //
+        return view('equipe.equipeshow', compact('equipe'));
     }
 
     /**
@@ -106,27 +107,32 @@ class EquipeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $equipe = Equipe::Find($id);
+        $equipe = Equipe::find($id);
 
-        $validatedData = $request->all();
+        if (!$equipe) {
+            return redirect()->route('equipe.index')->with('error', 'Équipe introuvable.');
+        }
 
+        $validatedData = $request->validate([
+            'ville' => 'required|string',
+            'categorie' => 'required|string',
+            'championnat' => 'required|string',
+        ]);
 
         $equipe->ville = $validatedData['ville'];
         $equipe->categorie = $validatedData['categorie'];
         $equipe->championnat = $validatedData['championnat'];
-
         $equipe->save();
 
-        return redirect()->route('championnat.index');
+        return redirect()->route('equipe.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Equipe $equipe)
     {
-        $equipe = Equipe::findOrFail($id);
-
         $equipe->delete();
 
         return redirect()->route('equipe.index');

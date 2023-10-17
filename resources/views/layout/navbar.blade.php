@@ -24,14 +24,15 @@
                         <a class="nav-link active" aria-current="page" href="{{ route('championnat.index') }}">Acceuil</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('match.index') }}">Matches</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('equipe.index') }}">Équipes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('joueur.index') }}">Joueurs</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Matches</a>
-                    </li>
+
                 </ul>
             </div>
         </div>

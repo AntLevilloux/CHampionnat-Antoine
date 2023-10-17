@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('ville', 75);
             $table->string('categorie', 75);
-            $table->string('championnat');
+            $table->string('championnat', 75);
             $table->timestamps();
             $table->softDeletes();
         });
