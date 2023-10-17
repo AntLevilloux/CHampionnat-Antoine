@@ -108,4 +108,5 @@ class MatchController extends Controller
         $match->delete();
         return redirect()->route('match.index');
     }
+
 }
