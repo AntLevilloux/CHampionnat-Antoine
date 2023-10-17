@@ -85,7 +85,6 @@ return [
     |
     */
 
-    'locale' => 'en',
     'locale' => 'fr',
 
     /*
@@ -99,7 +98,6 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
     'fallback_locale' => 'fr',
 
     /*
@@ -114,7 +112,6 @@ return [
     */
 
     'faker_locale' => 'fr_FR',
-    'faker_locale' => 'en_EN',
 
     /*
     |--------------------------------------------------------------------------
