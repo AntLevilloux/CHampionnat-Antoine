@@ -32,7 +32,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('joueur.index') }}">Joueurs</a>
                     </li>
-
+                    <li class="nav-item">
+                        <select name="lang" id="lang">
+                            <option value="fr">Francais</option>
+                            <option value="en">English</option>
+                        </select>
+                    </li>
                 </ul>
             </div>
         </div>
