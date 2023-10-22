@@ -47,7 +47,7 @@
                                     <input type="submit" class="btn btn-danger delete-user" value="Supprimer">
                                     <a class="btn btn-primary" href="{{ route('match.show', ['match' => $matchs->id]) }}">Info</a>
                                     @endcan
-                                    @can("createjoueur")
+                                    @can("arbitre")
                                     <a class="btn btn-secondary" href="{{ route('match.edit', ['match' => $matchs->id]) }}">Éditer</a>
                                     @endcan
                                 </div>
