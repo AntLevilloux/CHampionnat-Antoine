@@ -11,6 +11,9 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable
 {
+
+    use HasRolesAndAbilities;
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

@@ -6,6 +6,7 @@ use App\Http\Controllers\JoueurController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocalizationController;
 
 /*
 |--------------------------------------------------------------------------

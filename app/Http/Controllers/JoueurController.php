@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Equipe;
 use App\Models\Joueur;
 use Illuminate\Http\Request;
@@ -36,8 +38,13 @@ class JoueurController extends Controller
 
     public function create()
     {
+
+        if (Auth::admin()->can('create-joueur'))
+        {
         $equipes = Equipe::all();
         return view('joueur.joueurcreate', compact('equipes'));
+        }
+
     }
 
 

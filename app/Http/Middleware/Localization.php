@@ -15,9 +15,9 @@ class Localization
      */
     public function handle($request, Closure $next)
     {
-        if ( session()::has('lang')) {
-            // Récupération de la 'lang' dans Session et activation
-            app()::setLocale(session()::get('lang'));
+        if ($request->session()->has('lang')) {
+            // Récupération de 'lang' dans la session et activation
+            $request->app()->setLocale($request->session()->get('lang'));
         }
 
         return $next($request);
