@@ -22,6 +22,9 @@
                         <td>{{ $nul[$equipes->id] }}</td>
                         <td>{{ $defaites[$equipes->id] }}</td>
                         <td>
+
+                            @can("createjoueur")
+
                             <form method="POST" action="{{ route('equipe.destroy', ['equipe' => $equipes->id]) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -29,6 +32,7 @@
                                     <input type="submit" class="btn btn-danger delete-user" value="Supprimer">
                                     <a class="btn btn-primary" href="{{ route('equipe.show', ['equipe' => $equipes->id]) }}">Info</a>
                                     <a class="btn btn-secondary" href="{{ route('equipe.edit', ['equipe' => $equipes->id]) }}">Éditer</a>
+                                    @endcan
                                 </div>
                             </form>
                         </td>

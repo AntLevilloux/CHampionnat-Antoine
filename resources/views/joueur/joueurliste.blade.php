@@ -36,6 +36,9 @@
                                             @endif
                                         </td>
                                         <td>
+                                            @can("createjoueur")
+
+
                                             <form method="POST"
                                                 action="{{ route('joueur.destroy', ['joueur' => $joueur->id]) }}">
                                                 @csrf
@@ -47,7 +50,10 @@
                                                         href="{{ route('joueur.show', ['joueur' => $joueur->id]) }}">Info</a>
                                                     <a class="btn btn-secondary"
                                                         href="{{ route('joueur.edit', ['joueur' => $joueur->id]) }}">Éditer</a>
+
+                                                    @endcan
                                                 </div>
+
                                             </form>
                                         </td>
                                     </tr>

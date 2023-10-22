@@ -37,13 +37,19 @@
                         <td>{{ $equipeVisiteur->ville }}</td>
                         <td>{{ $matchs->date }}</td>
                         <td>
+
+                            @can("createjoueur")
+
                             <form method="POST" action="{{ route('match.destroy', ['match' => $matchs->id]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <div class="btn-group">
                                     <input type="submit" class="btn btn-danger delete-user" value="Supprimer">
                                     <a class="btn btn-primary" href="{{ route('match.show', ['match' => $matchs->id]) }}">Info</a>
+                                    @endcan
+                                    @can("createjoueur")
                                     <a class="btn btn-secondary" href="{{ route('match.edit', ['match' => $matchs->id]) }}">Éditer</a>
+                                    @endcan
                                 </div>
                             </form>
                         </td>
@@ -61,7 +67,9 @@
         </tbody>
     </table>
 
+    @can("createjoueur")
     <a class="btn btn-success" href="{{ route('match.create')}}">Ajouter un match</a>
+    @endcan
 
 
 

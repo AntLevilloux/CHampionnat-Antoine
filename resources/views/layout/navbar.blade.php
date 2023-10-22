@@ -38,6 +38,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="locale/fr">Francais</a>
                     </li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();" style="float: right; padding-right: 20px;">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
                 </ul>
             </div>
         </div>
