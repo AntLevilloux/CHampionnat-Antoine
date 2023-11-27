@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use App\Mail\InfoMail;
 use App\Models\Equipe;
 use App\Models\Joueur;
 use App\Models\Matche;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EquipeController extends Controller
 {
@@ -79,6 +81,8 @@ class EquipeController extends Controller
         $equipe->championnat = $data['championnat'];
         $equipe->save();
 
+        Mail::to(Auth::user())->send(new InfoMail($equipe));
+
         return redirect()->route('equipe.index');
     }
 
@@ -123,6 +127,8 @@ class EquipeController extends Controller
         $equipe->categorie = $validatedData['categorie'];
         $equipe->championnat = $validatedData['championnat'];
         $equipe->save();
+
+        Mail::to(Auth::user())->send(new InfoMail());
 
         return redirect()->route('equipe.index');
     }

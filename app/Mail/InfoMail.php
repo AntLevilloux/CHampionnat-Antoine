@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Equipe;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,15 +12,19 @@ use Illuminate\Queue\SerializesModels;
 
 class InfoMail extends Mailable
 {
-    public $test;
+
     use Queueable, SerializesModels;
+
+    public $equipe;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Test $test)
+    public function __construct(Equipe $equipe)
     {
-        $this->test = $test;
+
+        $this->equipe = $equipe;
+
     }
 
     /**
@@ -38,7 +43,7 @@ class InfoMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.info',
         );
     }
 
@@ -52,8 +57,4 @@ class InfoMail extends Mailable
         return [];
     }
 
-    public function build()
-    {
-        return $this->view('emails.info');
-    }
 }
