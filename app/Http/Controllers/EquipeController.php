@@ -128,7 +128,7 @@ class EquipeController extends Controller
         $equipe->championnat = $validatedData['championnat'];
         $equipe->save();
 
-        Mail::to(Auth::user())->send(new InfoMail());
+        //Mail::to(Auth::user())->send(new InfoMail());
 
         return redirect()->route('equipe.index');
     }

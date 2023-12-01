@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Mail\InfoMailJoueur;
 use App\Models\Equipe;
 use App\Models\Joueur;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class JoueurController extends Controller
 {
@@ -73,6 +75,8 @@ class JoueurController extends Controller
         $joueur->sexe = $request->sexe;
 
         $joueur->save();
+
+        Mail::to(Auth::user())->send(new InfoMailJoueur($joueur));
 
         return redirect()->route('joueur.index')->with('success', 'Le joueur a été créé avec succès.');
     }

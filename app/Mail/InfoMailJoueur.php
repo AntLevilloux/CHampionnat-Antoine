@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Equipe;
+use App\Models\joueur;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -10,20 +10,20 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class InfoMail extends Mailable
+class InfoMailJoueur extends Mailable
 {
 
     use Queueable, SerializesModels;
 
-    public $equipe;
+    public $joueur;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Equipe $equipe)
+    public function __construct(joueur $joueur)
     {
 
-        $this->equipe = $equipe;
+        $this->joueur = $joueur;
 
     }
 
@@ -33,7 +33,7 @@ class InfoMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nouvelle equipe',
+            subject: 'Nouveau joueur',
         );
     }
 
@@ -43,7 +43,7 @@ class InfoMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.info',
+            view: 'mail_joueur.blade.php',
         );
     }
 
